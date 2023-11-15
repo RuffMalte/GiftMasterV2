@@ -60,8 +60,21 @@ struct PersonDetailView: View {
 		Section {
 			ForEach(person.giftIds, id: \.self) { giftId in
 				GetGiftByIdView(id: giftId)
+					.swipeActions {
+						
+						SwipeActionsConfirmationView(swipeButtonImage: "trash", buttonRole: .destructive, title: "Are you sure you want to delete this Gift?", mainButtonText: "Delete") {
+							person.giftIds.removeAll(where: { $0 == giftId })
+						}
+
+						
+						
+					}
 			}
-			.onDelete(perform: deleteGift)
+//			.onDelete { offsets in
+//				
+//				
+//			}
+//			.onDelete(perform: deleteGift)
 			.onMove(perform: moveGift)
 		}
 
