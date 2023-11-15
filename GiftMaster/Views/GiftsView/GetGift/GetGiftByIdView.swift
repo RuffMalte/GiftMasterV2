@@ -21,7 +21,9 @@ struct GetGiftByIdView: View {
 		VStack {
 			if let gift = gift {
 				NavigationLink {
-					GiftDetailView(gift: gift)
+					ModifyGiftSheetView(gift: gift)
+						.navigationBarBackButtonHidden()
+						.navigationTitle(gift.name)
 				} label: {
 					GiftCellView(gift: gift)
 				}

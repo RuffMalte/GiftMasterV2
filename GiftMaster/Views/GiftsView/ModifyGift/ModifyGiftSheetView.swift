@@ -82,7 +82,7 @@ struct ModifyGiftSheetView: View {
 	
 	var imagePicker: some View {
 		Section {
-			//ImageLibarySelectionView(data: $gift.images)
+			ImageLibarySelectionView(data: $gift.images)
 		} header: {
 			Text("Images")
 		}
@@ -108,7 +108,7 @@ struct ModifyGiftSheetView: View {
 			
 			Picker(selection: $gift.status) {
 				ForEach(GiftStatus.allCases, id: \.rawValue) { status in
-					Label(status.rawValue, systemImage: status.icon)
+					Label(status.rawValue.capitalized, systemImage: status.icon)
 						.tag(status)
 				}
 			} label: {
