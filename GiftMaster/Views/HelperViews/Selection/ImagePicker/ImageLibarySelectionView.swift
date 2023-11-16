@@ -43,7 +43,7 @@ struct ImageLibarySelectionView: View {
 				if data.count < 9 {
 					PhotosPicker(
 						selection: $selectedItems,
-						maxSelectionCount: 9 - data.count, // Limit selection to fill up to 9 images
+						maxSelectionCount: 3 - data.count, // Limit selection to fill up to 3 images
 						matching: .images
 					) {
 						Image(systemName: "photo.fill")

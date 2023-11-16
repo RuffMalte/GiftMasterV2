@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E3BA9C12B056B82006716EA /* SwipeActionsConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */; };
 		2E6EFB582AF6EA61004DA55D /* GiftMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */; };
 		2E6EFB5A2AF6EA61004DA55D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EFB592AF6EA61004DA55D /* ContentView.swift */; };
 		2E6EFB5C2AF6EA63004DA55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6EFB5B2AF6EA63004DA55D /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionsConfirmationView.swift; sourceTree = "<group>"; };
 		2E6EFB542AF6EA61004DA55D /* GiftMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftMasterApp.swift; sourceTree = "<group>"; };
 		2E6EFB592AF6EA61004DA55D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -240,7 +242,6 @@
 				2E76C8992AFC088700E37248 /* Selection */,
 				2E76C8862AF96DAB00E37248 /* Textfield */,
 				2E76C8832AF96CFF00E37248 /* Button */,
-				2E76C8812AF96C5700E37248 /* TextfieldWithRevertButton.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -435,6 +436,7 @@
 		2E76C8862AF96DAB00E37248 /* Textfield */ = {
 			isa = PBXGroup;
 			children = (
+				2E76C8812AF96C5700E37248 /* TextfieldWithRevertButton.swift */,
 			);
 			path = Textfield;
 			sourceTree = "<group>";
@@ -508,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				2E86BE752B00001100E990D0 /* ConfirmationDialogModifier.swift */,
+				2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				2E76C86D2AF7E2D900E37248 /* StringExtensions.swift in Sources */,
 				2E76C8852AF96D1200E37248 /* ToolbarSaveButton.swift in Sources */,
 				2ECED75F2B00500C00DC9D99 /* TempOverlayViewModel.swift in Sources */,
+				2E3BA9C12B056B82006716EA /* SwipeActionsConfirmationView.swift in Sources */,
 				2E76C88C2AFABD7000E37248 /* ModifyGiftWithButtonView.swift in Sources */,
 				2E86BE702AFFCEDD00E990D0 /* ColorSelectorView.swift in Sources */,
 				2ECED7622B00D47F00DC9D99 /* NewPersonAddedCardView.swift in Sources */,
