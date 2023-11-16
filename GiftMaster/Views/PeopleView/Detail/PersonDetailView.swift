@@ -13,6 +13,8 @@ struct PersonDetailView: View {
 	
 	@State var newIntrestId: String = ""
 	
+	@State var isDialogPresented: Bool = false
+	
 	var body: some View {
 		Form {
 			
@@ -59,22 +61,14 @@ struct PersonDetailView: View {
 	var gifts: some View {
 		Section {
 			ForEach(person.giftIds, id: \.self) { giftId in
-				GetGiftByIdView(id: giftId)
-					.swipeActions {
-						
-						SwipeActionsConfirmationView(swipeButtonImage: "trash", buttonRole: .destructive, title: "Are you sure you want to delete this Gift?", mainButtonText: "Delete") {
-							person.giftIds.removeAll(where: { $0 == giftId })
+				GetGiftByIdView(id: giftId)	{ notFoundID in
+					withAnimation {
+						person.giftIds.removeAll { id in
+							id == notFoundID
 						}
-
-						
-						
 					}
+				}
 			}
-//			.onDelete { offsets in
-//				
-//				
-//			}
-//			.onDelete(perform: deleteGift)
 			.onMove(perform: moveGift)
 		}
 
