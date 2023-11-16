@@ -11,11 +11,14 @@ import SwiftData
 struct GetGiftByIdView: View {
 	
 	@State var id: UUID
-	
+		
 	@Query(sort: \GiftModel.name, animation: .bouncy) var gifts: [GiftModel]
 	@Environment(\.modelContext) private var modelContext
 	
 	@State var gift: GiftModel?
+	
+	var onNotFound: (UUID?) -> Void = { _ in }
+	
 	
 	var body: some View {
 		VStack {
@@ -25,13 +28,13 @@ struct GetGiftByIdView: View {
 						.navigationBarBackButtonHidden()
 						.navigationTitle(gift.name)
 				} label: {
-					GiftCellView(gift: gift)
+					GiftCellView(gift: gift) { giftID in
+						onNotFound(giftID)
+					}
 				}
-				
-			} else {
-				EmptyView()
 			}
 		}
+		
 		.onAppear {
 			getGiftById()
 		}
@@ -40,11 +43,10 @@ struct GetGiftByIdView: View {
 	
 	
 	func getGiftById() {
-		for gift in gifts {
-			
-			if gift.id == id {
-				self.gift = gift
-			}
+		if let foundGift = gifts.first(where: { $0.id == id }) {
+			self.gift = foundGift
+		} else {
+			onNotFound(id)
 		}
 	}
 }

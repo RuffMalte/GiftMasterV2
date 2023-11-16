@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct SwipeActionsConfirmationView: View {
-	
 	var swipeButtonImage: String
 	var buttonRole: ButtonRole
 	var buttonColor: Color?
 	
 	var title: String
 	var mainButtonText: String
-	let message: String = "This action can not be undone."
-	let mainButtonAction: () -> Void
+	var mainButtonAction: () -> Void
 	
-	@State private var isPresented: Bool = false
-
+	@Binding var isPresented: Bool
 	
 	var body: some View {
-		
-		Button(role: buttonRole) {
-			isPresented = true
-		} label: {
-			Image(systemName: swipeButtonImage)
-				.foregroundColor(buttonColor ?? .accentColor)
-		}
-		.confirmationDialog(title, isPresented: $isPresented) {
-			Button {
-				isPresented = false
-			} label: {
-				Text("Cancel")
+		Image(systemName: swipeButtonImage)
+			.foregroundColor(buttonColor ?? .accentColor)
+			.swipeActions {
+				Button(role: buttonRole) {
+					isPresented = true
+				} label: {
+					Label(mainButtonText, systemImage: swipeButtonImage)
+				}
 			}
-			
-			Button(role: .destructive) {
-				mainButtonAction()
-			} label: {
-				Text(mainButtonText)
+			.confirmationDialog(title, isPresented: $isPresented) {
+				Button("Cancel", role: .cancel) {
+					isPresented = false
+				}
+				Button(mainButtonText, role: .destructive) {
+					mainButtonAction()
+					isPresented = false
+				}
+			} message: {
+				Text("This action cannot be undone.")
 			}
-	
-			
-			
-		} message: {
-			Text(message)
-		}
 	}
 }
+
+
 

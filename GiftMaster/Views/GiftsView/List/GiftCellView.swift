@@ -12,7 +12,13 @@ struct GiftCellView: View {
 	@Bindable var gift: GiftModel
 	
 	@State private var isEditSheetPresented: Bool = false
+	@State private var 	isDeleteSheetPresented: Bool = false
 
+	@Environment(\.modelContext) private var modelContext
+	
+	var onNotFound: (UUID?) -> Void = { _ in }
+
+	
     var body: some View {
 		VStack {
 			HStack {
@@ -74,9 +80,24 @@ struct GiftCellView: View {
 			} label: {
 				Label("Edit this Gift", systemImage: "pencil")
 			}
+			Button(role: .destructive) {
+				isDeleteSheetPresented.toggle()
+			} label: {
+				Label("Delete Gift", systemImage: "trash.fill")
+			}
 		}
 		.sheet(isPresented: $isEditSheetPresented) {
 			ModifyGiftSheetView(isNewGift: false, gift: gift)
+		}
+		.confirmationDialog("Are you sure?", isPresented: $isDeleteSheetPresented, titleVisibility: .visible) {
+			Button(role: .destructive) {
+				modelContext.delete(gift)
+				onNotFound(gift.id)
+			} label: {
+				Text("Yes")
+			}
+			
+			Button("Cancel", role: .cancel) {}
 		}
     }
 }
