@@ -37,6 +37,22 @@ struct PersonDetailView: View {
 		}
 		.listSectionSpacing(.compact)
 		
+		.overlay {
+			if person.giftIds.isEmpty {
+				ContentUnavailableView {
+					Image(systemName: "archivebox")
+						.font(.system(size: 50))
+				} description: {
+					Text("No gifts for " + person.firstName + " yet")
+				} actions: {
+					ModifyGiftWithButtonView(isNewGift: true, gift: GiftModel(price: 0.0, name: "")) { gift in
+						person.giftIds.append(gift.id)
+					}
+					.buttonStyle(.borderedProminent)
+				}
+				
+			}
+		}
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
@@ -71,6 +87,7 @@ struct PersonDetailView: View {
 			}
 			.onMove(perform: moveGift)
 		}
+		
 
 	}
 	
