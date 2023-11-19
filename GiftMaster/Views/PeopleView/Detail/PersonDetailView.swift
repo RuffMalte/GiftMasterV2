@@ -21,7 +21,7 @@ struct PersonDetailView: View {
 	
 	@State var showAddIntrestPopup: Bool = false
 	@State var showPersonEditPopup: Bool = false
-
+	
 	var body: some View {
 		Form {
 			
@@ -42,6 +42,7 @@ struct PersonDetailView: View {
 			
 			gifts
 		}
+		
 		.listSectionSpacing(.compact)
 		
 		.overlay {
@@ -129,8 +130,6 @@ struct PersonDetailView: View {
 				}
 			}
 		}
-		
-		
 		.sheet(isPresented: $showAddIntrestPopup) {
 			ModifyIntrestSheetView(isNewIntrest: true, intrest: IntrestModel(name: "", icon: "")) { IntrestModel in
 				person.likedGenresIds.append(IntrestModel.id)
