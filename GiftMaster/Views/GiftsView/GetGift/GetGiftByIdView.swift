@@ -12,6 +12,9 @@ struct GetGiftByIdView: View {
 	
 	@State var id: UUID
 		
+	var matchingParentIntrrests: [UUID]?
+
+	
 	@Query(sort: \GiftModel.name, animation: .bouncy) var gifts: [GiftModel]
 	@Environment(\.modelContext) private var modelContext
 	
@@ -28,9 +31,17 @@ struct GetGiftByIdView: View {
 						.navigationBarBackButtonHidden()
 						.navigationTitle(gift.name)
 				} label: {
-					GiftCellView(gift: gift) { giftID in
-						onNotFound(giftID)
+					if let matchingParentIntrrests = matchingParentIntrrests {
+						GiftCellView(gift: gift, matchingParentIntrrests: matchingParentIntrrests) { giftID in
+							onNotFound(giftID)
+						}
+					} else {
+						GiftCellView(gift: gift) { giftID in
+							onNotFound(giftID)
+						}
 					}
+					
+					
 				}
 			}
 		}

@@ -13,6 +13,7 @@ enum IntrestsDisplayMode {
 	case forSelection((IntrestModel) -> Void)
 	case forSelectionNoXmark
 	case normal
+	case small(Bool?)
 }
 
 struct GetIntrestByIdView: View {
@@ -44,6 +45,14 @@ struct GetIntrestByIdView: View {
 					
 				case .normal:
 					IntrestCellView(intrest: intrest)
+					
+				case .small(let isMatching):
+					if let isMatching = isMatching {
+						IntrestSmallCellView(intrest: intrest, isMatching: isMatching)
+					} else {
+						IntrestSmallCellView(intrest: intrest)
+					}
+					
 				}
 			}
 		}

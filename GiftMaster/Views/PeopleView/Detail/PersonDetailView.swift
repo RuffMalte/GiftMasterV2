@@ -15,6 +15,13 @@ struct PersonDetailView: View {
 	
 	@State var isDialogPresented: Bool = false
 	
+	@AppStorage("showGiftCellViewDetails") var showGiftCellViewDetails: Bool = true
+	@AppStorage("showPersonIntrests") var showPersonIntrests: Bool = true
+	@AppStorage("selectedPersonSortOptionString") var selectedSortOption: String = "name"
+	
+	@State var showAddIntrestPopup: Bool = false
+	@State var showPersonEditPopup: Bool = false
+
 	var body: some View {
 		Form {
 			
@@ -22,11 +29,11 @@ struct PersonDetailView: View {
 				HStack(alignment: .center) {
 					PersonCellView(person: person, showLastName: true, showPopovers: true)
 				}
-				if !person.likedGenresIds.isEmpty {
+				if !person.likedGenresIds.isEmpty && showPersonIntrests {
 					IntrestsSmallListView(interestIds: $person.likedGenresIds, showXButton: false)
 				}
 				Divider()
-
+				
 			}
 			.listRowInsets(EdgeInsets())
 			.listRowBackground(Color(UIColor.systemGroupedBackground))
@@ -56,12 +63,63 @@ struct PersonDetailView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			ToolbarItem(placement: .confirmationAction) {
-				ModfiyPersonWithButtonView(isNewPerson: false, person: person)
-			}
-			
-			ToolbarItem(placement: .confirmationAction) {
-				ModifyIntrestWithButtonView(isNewIntrest: true, intrest: IntrestModel(name: "", icon: "")) { IntrestModel in
-					person.likedGenresIds.append(IntrestModel.id)
+				Menu {
+					Button { showPersonEditPopup.toggle() } 
+					label: { Label("Edit Person", systemImage: "pencil") }
+					Divider()
+					
+					Button { showAddIntrestPopup.toggle() }
+					label: { Label("Add Intrest", systemImage: "tag.fill") }
+					
+					Menu {
+						Button {
+							withAnimation {
+								showGiftCellViewDetails.toggle()
+							}
+						} label: {
+							Label("\(showGiftCellViewDetails ? "Dont show" : "Show") Gift Intrests and Maker", systemImage: showGiftCellViewDetails ? "eye.fill" : "eye.slash.fill")
+						}
+						Button {
+							withAnimation {
+								showPersonIntrests.toggle()
+							}
+						} label: {
+							Label("\(showPersonIntrests ? "Dont show" : "Show") Person Intrests", systemImage: showPersonIntrests ? "eye.fill" : "eye.slash.fill")
+						}
+					} label: {
+						Label("Customize appearance", systemImage: "paintbrush")
+					}
+					
+//					Picker(selection: $selectedSortOption) {
+//						Button {
+//							
+//						} label: {
+//							Label("Sort by name", systemImage: "a.circle")
+//						}
+//						.tag("name")
+//						
+//						Button {
+//							
+//						} label: {
+//							Label("Sort by price", systemImage: "dollarsign")
+//						}
+//						.tag("price")
+//						
+//						Button {
+//							
+//						} label: {
+//							Label("Sort by status", systemImage: "viewfinder")
+//						}
+//						.tag("date")
+//					} label: {
+//						Label("Sort", systemImage: "arrow.up.arrow.down.circle")
+//					}
+//					.pickerStyle(.menu)
+					
+					EditButton()
+					
+				} label: {
+					Image(systemName: "ellipsis.circle")
 				}
 			}
 			
@@ -71,13 +129,22 @@ struct PersonDetailView: View {
 				}
 			}
 		}
+		
+		
+		.sheet(isPresented: $showAddIntrestPopup) {
+			ModifyIntrestSheetView(isNewIntrest: true, intrest: IntrestModel(name: "", icon: "")) { IntrestModel in
+				person.likedGenresIds.append(IntrestModel.id)
+			}
+		}
+		.sheet(isPresented: $showPersonEditPopup) {
+			ModifyPersonSheetView(isNewPerson: false, person: person)
+		}
 	}
-	
 	
 	var gifts: some View {
 		Section {
 			ForEach(person.giftIds, id: \.self) { giftId in
-				GetGiftByIdView(id: giftId)	{ notFoundID in
+				GetGiftByIdView(id: giftId, matchingParentIntrrests: person.likedGenresIds)	{ notFoundID in
 					withAnimation {
 						person.giftIds.removeAll { id in
 							id == notFoundID
@@ -86,11 +153,10 @@ struct PersonDetailView: View {
 				}
 			}
 			.onMove(perform: moveGift)
+			.onDelete(perform: deleteGift)
+			
 		}
-		
-
 	}
-	
 	
 	private func deleteGift(offsets: IndexSet) {
 		withAnimation {

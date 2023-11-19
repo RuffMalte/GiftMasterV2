@@ -65,6 +65,7 @@
 		2E86BE7E2B003DD100E990D0 /* PersonBirthdayDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E86BE7D2B003DD100E990D0 /* PersonBirthdayDateView.swift */; };
 		2E86BE802B003E1500E990D0 /* PersonBirthdayForCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E86BE7F2B003E1500E990D0 /* PersonBirthdayForCellView.swift */; };
 		2E86BE832B003F9D00E990D0 /* PopupViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E86BE822B003F9D00E990D0 /* PopupViewModifier.swift */; };
+		2EABC0BB2B094F4E00DBF569 /* IntrestSmallCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABC0BA2B094F4E00DBF569 /* IntrestSmallCellView.swift */; };
 		2ECED75B2B0047E200DC9D99 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECED75A2B0047E200DC9D99 /* PopupView.swift */; };
 		2ECED75D2B004E0300DC9D99 /* TemporaryOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECED75C2B004E0300DC9D99 /* TemporaryOverlayModifier.swift */; };
 		2ECED75F2B00500C00DC9D99 /* TempOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECED75E2B00500C00DC9D99 /* TempOverlayViewModel.swift */; };
@@ -140,6 +141,7 @@
 		2E86BE7D2B003DD100E990D0 /* PersonBirthdayDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBirthdayDateView.swift; sourceTree = "<group>"; };
 		2E86BE7F2B003E1500E990D0 /* PersonBirthdayForCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBirthdayForCellView.swift; sourceTree = "<group>"; };
 		2E86BE822B003F9D00E990D0 /* PopupViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewModifier.swift; sourceTree = "<group>"; };
+		2EABC0BA2B094F4E00DBF569 /* IntrestSmallCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrestSmallCellView.swift; sourceTree = "<group>"; };
 		2ECED75A2B0047E200DC9D99 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		2ECED75C2B004E0300DC9D99 /* TemporaryOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryOverlayModifier.swift; sourceTree = "<group>"; };
 		2ECED75E2B00500C00DC9D99 /* TempOverlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempOverlayViewModel.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				2E76C8752AF7E57200E37248 /* IntrestCellView.swift */,
 				2E76C8A02AFD64DE00E37248 /* IntrestSelectionView.swift */,
 				2E86BE792B000EE700E990D0 /* IntrestCellForSelectionView.swift */,
+				2EABC0BA2B094F4E00DBF569 /* IntrestSmallCellView.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				2E76C87E2AF96B1900E37248 /* ModfiyPersonWithButtonView.swift in Sources */,
 				2E86BE802B003E1500E990D0 /* PersonBirthdayForCellView.swift in Sources */,
 				2E76C8A32AFD776E00E37248 /* SFIconSelector.swift in Sources */,
+				2EABC0BB2B094F4E00DBF569 /* IntrestSmallCellView.swift in Sources */,
 				2E6EFB832AF6F2B4004DA55D /* PersonCellView.swift in Sources */,
 				2E76C8A12AFD64DE00E37248 /* IntrestSelectionView.swift in Sources */,
 				2E76C8962AFAD05000E37248 /* ModifyMakerWithButtonView.swift in Sources */,

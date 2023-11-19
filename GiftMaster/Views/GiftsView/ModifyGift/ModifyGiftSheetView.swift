@@ -124,7 +124,12 @@ struct ModifyGiftSheetView: View {
 	
 	var details: some View {
 		Section {
-			IntrestSelectionView(interestIds: $gift.matchingIntrestsIds, selectedWhat: "matching Intrests")
+			VStack {
+				IntrestSelectionView(interestIds: $gift.matchingIntrestsIds, selectedWhat: "matching Intrests")
+				if !gift.matchingIntrestsIds.isEmpty {
+					IntrestsSmallListView(interestIds: $gift.matchingIntrestsIds, showXButton: true)
+				}
+			}
 			
 			MakerSelectionView(toID: $gift.makerId)
 		} header: {
