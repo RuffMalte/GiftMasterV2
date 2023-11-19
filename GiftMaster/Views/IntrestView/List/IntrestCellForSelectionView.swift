@@ -30,6 +30,7 @@ struct IntrestCellForSelectionView: View {
 			if let onXmarkPress = onXmarkPress {
 				Button {
 					onXmarkPress(intrest)
+					Haptics().playFeedbackHaptic(.light)
 				} label: {
 					Image(systemName: "xmark")
 						.font(.subheadline)

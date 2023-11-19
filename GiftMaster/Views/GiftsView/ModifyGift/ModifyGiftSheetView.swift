@@ -59,9 +59,10 @@ struct ModifyGiftSheetView: View {
 						if isNewGift {
 							withAnimation {
 								modelContext.insert(gift)
-								onSave?(gift) 
+								onSave?(gift)
 							}
 						}
+						DropViews().ModifyGiftDrop(gift: gift, isNewGift: isNewGift)
 					})
 				}
 				ToolbarItem(placement: .cancellationAction) {
@@ -71,6 +72,7 @@ struct ModifyGiftSheetView: View {
 								gift.update(secondGift: lastSavedGift)
 							}
 						}
+						Haptics().playFeedbackHaptic(.light)
 					})
 				}
 			}
@@ -91,9 +93,7 @@ struct ModifyGiftSheetView: View {
 	var giftInformation: some View {
 		Section {
 			TextFieldWithRevertButton(text: $gift.name, textFieldDescription: "Gift Name", textCharacterLimit: 30)
-			
-//			Text(prettierCurrency(gift.price))
-						
+									
 			TextFieldWithRevertButton(text: $gift.link, textFieldDescription: "Gift Link")
 			
 			//TODO: create a custom NumberField

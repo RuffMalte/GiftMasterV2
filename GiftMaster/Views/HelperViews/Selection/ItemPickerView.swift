@@ -52,6 +52,7 @@ struct ItemPickerView<SelectionLabel: View, SelectableItemLabel: View ,Item: Ide
 									selectedItem = item
 									isShowingPopover = false
 									onItemSelected(item)
+									Haptics().playFeedbackHaptic(.light)
 								} label: {
 									selectableItemLabel(item)
 								}

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Drops
 
 struct ModifyPersonSheetView: View {
 	
@@ -43,6 +44,8 @@ struct ModifyPersonSheetView: View {
 								modelContext.insert(person)
 							}
 						}
+						DropViews().ModfiyPersonDrop(person: person, isNewPerson: isNewPerson)
+
 					})
 				}
 				
@@ -53,6 +56,7 @@ struct ModifyPersonSheetView: View {
 								person.update(secondPerson: lastPersonCopy)
 							}
 						}
+						Haptics().playFeedbackHaptic(.light)
 					})
 				}
 				
@@ -108,6 +112,7 @@ struct ModifyPersonSheetView: View {
 				}
 			}.onTapGesture {
 				person.isFavorite.toggle()
+				Haptics().playFeedbackHaptic(.soft)
 			}
 			
 			

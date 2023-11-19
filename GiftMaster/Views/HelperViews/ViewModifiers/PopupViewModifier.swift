@@ -15,6 +15,7 @@ struct PopoverViewModifier<PopoverContent>: ViewModifier where PopoverContent: V
 		content
 			.onTapGesture {
 				self.isPresented = true
+				Haptics().playFeedbackHaptic(.light)
 			}
 			.popover(isPresented: $isPresented, content: popoverContent)
 	}

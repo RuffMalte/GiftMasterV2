@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct PersonDetailView: View {
 	
@@ -21,6 +22,9 @@ struct PersonDetailView: View {
 	
 	@State var showAddIntrestPopup: Bool = false
 	@State var showPersonEditPopup: Bool = false
+	
+	@State var showConfetti: Bool = false
+
 	
 	var body: some View {
 		Form {
@@ -42,7 +46,14 @@ struct PersonDetailView: View {
 			
 			gifts
 		}
-		
+		.confettiOverlay(amount: 10, isEmitting: showConfetti)
+		.onAppear {
+			if person.daysTillBirthday == 0 {
+				Task {
+					await displayConfetti()
+				}
+			}
+		}
 		.listSectionSpacing(.compact)
 		
 		.overlay {
@@ -76,6 +87,7 @@ struct PersonDetailView: View {
 						Button {
 							withAnimation {
 								showGiftCellViewDetails.toggle()
+								Haptics().playFeedbackHaptic(.light)
 							}
 						} label: {
 							Label("\(showGiftCellViewDetails ? "Dont show" : "Show") Gift Intrests and Maker", systemImage: showGiftCellViewDetails ? "eye.fill" : "eye.slash.fill")
@@ -83,6 +95,7 @@ struct PersonDetailView: View {
 						Button {
 							withAnimation {
 								showPersonIntrests.toggle()
+								Haptics().playFeedbackHaptic(.light)
 							}
 						} label: {
 							Label("\(showPersonIntrests ? "Dont show" : "Show") Person Intrests", systemImage: showPersonIntrests ? "eye.fill" : "eye.slash.fill")
@@ -168,6 +181,17 @@ struct PersonDetailView: View {
 	private func moveGift(from: IndexSet, to: Int) {
 		withAnimation {
 			person.giftIds.move(fromOffsets: from, toOffset: to)
+		}
+	}
+	func displayConfetti() async {
+		do {
+			showConfetti = true
+			try await Task.sleep(nanoseconds: 1_000_000_000)
+			Haptics().playFeedbackHaptic(.rigid)
+			try await Task.sleep(nanoseconds: 1_500_000_000)
+			showConfetti = false
+		} catch {
+			showConfetti = false
 		}
 	}
 }

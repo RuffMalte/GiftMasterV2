@@ -19,7 +19,6 @@ struct PersonCellView: View {
 	@State private var isDeleteSheetPresented: Bool = false
 	
 	@Environment(\.modelContext) private var modelContext
-	@State var confettiCounter: Int = 0
 
 	@State var showConfetti: Bool = false
 	
@@ -72,7 +71,7 @@ struct PersonCellView: View {
 		}
 		.confettiOverlay(amount: 10, isEmitting: showConfetti)
 		.onAppear {
-			if person.daysTillBirthday == 0 {
+			if person.daysTillBirthday == 0 && !showPopovers {
 				Task {
 					await displayConfetti()
 				}
@@ -113,11 +112,12 @@ struct PersonCellView: View {
 			Button("Cancel", role: .cancel) {}
 		}
 	}
-	
 	func displayConfetti() async {
 		do {
 			showConfetti = true
-			try await Task.sleep(nanoseconds: 2_500_000_000)
+			try await Task.sleep(nanoseconds: 1_000_000_000)
+			Haptics().playFeedbackHaptic(.rigid)
+			try await Task.sleep(nanoseconds: 1_500_000_000)
 			showConfetti = false
 		} catch {
 			showConfetti = false

@@ -3,7 +3,7 @@ import SwiftUI
 
 // private var selectedStyle: UIImpactFeedbackGenerator.FeedbackStyle = .light
 
-
+#if os(iOS)
 class Haptics {
 	
 	
@@ -18,5 +18,5 @@ class Haptics {
 		generator.notificationOccurred(type)
 	}
 }
-
+#endif
 

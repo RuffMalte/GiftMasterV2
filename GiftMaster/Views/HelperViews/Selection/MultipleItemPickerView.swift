@@ -54,6 +54,7 @@ struct MultipleItemsPickerView<SelectionLabel: View, SelectableItemLabel: View, 
 										selectedItems.insert(item.id)
 									}
 									onItemSelected(item)
+									Haptics().playFeedbackHaptic(.light)
 								} label: {
 									selectableItemLabel(item, selectedItems.contains(item.id))
 								}

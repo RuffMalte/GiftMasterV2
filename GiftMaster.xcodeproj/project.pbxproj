@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E1029A62B0A494100497353 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 2E1029A52B0A494100497353 /* Drops */; };
+		2E1029AB2B0A4AE600497353 /* DropViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1029AA2B0A4AE600497353 /* DropViews.swift */; };
+		2E1029AE2B0A540500497353 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1029AD2B0A540500497353 /* Haptics.swift */; };
 		2E3BA9C12B056B82006716EA /* SwipeActionsConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */; };
 		2E53AC562B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */; };
 		2E6EFB582AF6EA61004DA55D /* GiftMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */; };
@@ -82,6 +85,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E1029AA2B0A4AE600497353 /* DropViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViews.swift; sourceTree = "<group>"; };
+		2E1029AD2B0A540500497353 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionsConfirmationView.swift; sourceTree = "<group>"; };
 		2E6EFB542AF6EA61004DA55D /* GiftMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftMasterApp.swift; sourceTree = "<group>"; };
@@ -163,12 +168,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E53AC562B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay in Frameworks */,
+				2E1029A62B0A494100497353 /* Drops in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E1029A72B0A4A4500497353 /* DropViews */ = {
+			isa = PBXGroup;
+			children = (
+				2E1029AA2B0A4AE600497353 /* DropViews.swift */,
+			);
+			path = DropViews;
+			sourceTree = "<group>";
+		};
+		2E1029AC2B0A53FB00497353 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				2E1029AD2B0A540500497353 /* Haptics.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
 		2E6EFB4B2AF6EA61004DA55D = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */,
+				2E1029AC2B0A53FB00497353 /* Haptics */,
 				2EF1239E2B00FBB500648D23 /* StaticLists */,
 				2E86BE6C2AFEA07600E990D0 /* ViewModel */,
 				2E6EFB672AF6EA7A004DA55D /* Models */,
@@ -240,6 +263,7 @@
 		2E6EFB682AF6EA89004DA55D /* HelperViews */ = {
 			isa = PBXGroup;
 			children = (
+				2E1029A72B0A4A4500497353 /* DropViews */,
 				2E86BE812B003F9100E990D0 /* ViewModifiers */,
 				2E86BE742B00000900E990D0 /* Confirmation */,
 				2E86BE712AFFD43C00E990D0 /* DateViews */,
@@ -594,6 +618,7 @@
 			name = GiftMaster;
 			packageProductDependencies = (
 				2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */,
+				2E1029A52B0A494100497353 /* Drops */,
 			);
 			productName = GiftMaster;
 			productReference = 2E6EFB542AF6EA61004DA55D /* GiftMaster.app */;
@@ -625,6 +650,7 @@
 			mainGroup = 2E6EFB4B2AF6EA61004DA55D;
 			packageReferences = (
 				2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */,
+				2E1029A42B0A494100497353 /* XCRemoteSwiftPackageReference "Drops" */,
 			);
 			productRefGroup = 2E6EFB552AF6EA61004DA55D /* Products */;
 			projectDirPath = "";
@@ -685,6 +711,7 @@
 				2E6EFB7B2AF6EEF3004DA55D /* MainTabView.swift in Sources */,
 				2EF123B12B05533800648D23 /* ImageCellView.swift in Sources */,
 				2E76C8782AF7E5E400E37248 /* IntrestPreviewItems.swift in Sources */,
+				2E1029AE2B0A540500497353 /* Haptics.swift in Sources */,
 				2E76C8662AF7CC0B00E37248 /* MakerListView.swift in Sources */,
 				2E6EFB802AF6F204004DA55D /* GiftPreviewItems.swift in Sources */,
 				2EF123A52B01138A00648D23 /* GiftCustomListView.swift in Sources */,
@@ -715,6 +742,7 @@
 				2E76C85B2AF7BE7E00E37248 /* MakerModel.swift in Sources */,
 				2ECED75B2B0047E200DC9D99 /* PopupView.swift in Sources */,
 				2E6EFB852AF6F2FD004DA55D /* PersonDetailView.swift in Sources */,
+				2E1029AB2B0A4AE600497353 /* DropViews.swift in Sources */,
 				2E6EFB8F2AF6F8B6004DA55D /* GiftDetailView.swift in Sources */,
 				2EF123AE2B0552FB00648D23 /* ImageLibarySelectionView.swift in Sources */,
 				2E76C8822AF96C5700E37248 /* TextfieldWithRevertButton.swift in Sources */,
@@ -941,6 +969,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2E1029A42B0A494100497353 /* XCRemoteSwiftPackageReference "Drops" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omaralbeik/Drops.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 		2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BertanT/SwiftUIConfettiOverlay.git";
@@ -952,6 +988,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2E1029A52B0A494100497353 /* Drops */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E1029A42B0A494100497353 /* XCRemoteSwiftPackageReference "Drops" */;
+			productName = Drops;
+		};
 		2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */;

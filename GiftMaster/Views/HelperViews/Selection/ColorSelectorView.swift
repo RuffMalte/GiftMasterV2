@@ -17,6 +17,7 @@ struct ColorSelectorView: View {
 				ForEach(ColorEnum.allCases, id: \.self) { color in
 					Button {
 						selectedColor = color
+						Haptics().playFeedbackHaptic(.light)
 					} label: {
 						RoundedRectangle(cornerRadius: 10)
 							.foregroundStyle(color.toColor.gradient)

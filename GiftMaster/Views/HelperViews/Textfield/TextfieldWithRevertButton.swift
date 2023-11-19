@@ -41,6 +41,7 @@ struct TextFieldWithRevertButton: View {
 						text = originalText
 						showRevertButton = false
 					}
+					Haptics().playFeedbackHaptic(.light)
 				} label: {
 					Image(systemName: "arrow.uturn.left")
 						.fontWeight(.bold)

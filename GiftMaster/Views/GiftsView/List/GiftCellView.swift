@@ -44,11 +44,13 @@ struct GiftCellView: View {
 			
 			Button {
 				isEditSheetPresented.toggle()
+				Haptics().playFeedbackHaptic(.light)
 			} label: {
 				Label("Edit this Gift", systemImage: "pencil")
 			}
 			Button(role: .destructive) {
 				isDeleteSheetPresented.toggle()
+				Haptics().playFeedbackHaptic(.light)
 			} label: {
 				Label("Delete Gift", systemImage: "trash.fill")
 			}
@@ -74,6 +76,7 @@ struct GiftCellView: View {
 				ForEach(GiftStatus.allCases, id: \.rawValue) { status in
 					Button {
 						gift.status = status
+						Haptics().playFeedbackHaptic(.light)
 					} label: {
 						Label(status.rawValue.capitalized, systemImage: status.icon)
 							.foregroundStyle(status.color)
