@@ -70,11 +70,26 @@ class PersonModel {
 	var daysTillBirthday: Int {
 		let cal = Calendar.current
 		let today = cal.startOfDay(for: Date())
-		let date = cal.startOfDay(for: birthday)
-		let components = cal.dateComponents([.day, .month], from: date)
-		let nextDate = cal.nextDate(after: today, matching: components, matchingPolicy: .nextTimePreservingSmallerComponents)
-		return cal.dateComponents([.day], from: today, to: nextDate ?? today).day ?? 0
+		let currentYear = cal.component(.year, from: today)
+		
+		// Create a date for the birthday in the current year
+		var birthdayThisYearComponents = cal.dateComponents([.day, .month, .year], from: birthday)
+		birthdayThisYearComponents.year = currentYear
+		let birthdayThisYear = cal.date(from: birthdayThisYearComponents) ?? birthday
+		let birthdayStart = cal.startOfDay(for: birthdayThisYear)
+		
+		// Check if today is the birthday
+		if today == birthdayStart {
+			return 0
+		}
+		
+		let components = cal.dateComponents([.day, .month], from: birthday)
+		let nextBirthday = cal.nextDate(after: today, matching: components, matchingPolicy: .nextTimePreservingSmallerComponents)
+		
+		return cal.dateComponents([.day], from: today, to: nextBirthday ?? today).day ?? 0
 	}
+
+
 	
 	var calculateAge: Int {
 		let calendar: Calendar = Calendar.current

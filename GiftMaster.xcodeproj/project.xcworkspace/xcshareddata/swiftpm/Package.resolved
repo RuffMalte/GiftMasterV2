@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuiconfettioverlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BertanT/SwiftUIConfettiOverlay.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "87d7e4f1cfa8674785430e9540785edf9506507d"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import ConfettiSwiftUI
+import SwiftUIConfettiOverlay
 
 struct PersonCellView: View {
 	@Bindable var person: PersonModel
@@ -18,11 +20,12 @@ struct PersonCellView: View {
 	@State private var isDeleteSheetPresented: Bool = false
 	
 	@Environment(\.modelContext) private var modelContext
+	@State var confettiCounter: Int = 0
 
+	@State var showConfetti: Bool = false
 	
 	var body: some View {
 		HStack {
-			
 			//ICON and NAME
 			HStack {
 				Image(systemName: person.icon)
@@ -57,7 +60,6 @@ struct PersonCellView: View {
 						}
 					}
 				}
-				
 			}
 			Spacer()
 			
@@ -68,8 +70,14 @@ struct PersonCellView: View {
 			}
 			
 			PersonBirthdayForCellView(person: person, showPopovers: showPopovers)
-			
-			
+		}
+		.confettiOverlay(amount: 10, isEmitting: showConfetti)
+		.onAppear {
+			if person.daysTillBirthday == 0 {
+				Task {
+					await displayConfetti()
+				}
+			}
 		}
 		.contextMenu {
 			Button {
@@ -96,17 +104,24 @@ struct PersonCellView: View {
 
 
 		}
-		.sheet(isPresented: $isEditSheetPresented) {
-			ModifyPersonSheetView(isNewPerson: false, person: person)
-		}
+		.sheet(isPresented: $isEditSheetPresented) { ModifyPersonSheetView(isNewPerson: false, person: person) }
 		.confirmationDialog("Are you sure?", isPresented: $isDeleteSheetPresented, titleVisibility: .visible) {
 			Button(role: .destructive) {
 				modelContext.delete(person)
 			} label: {
 				Text("Yes")
 			}
-
 			Button("Cancel", role: .cancel) {}
+		}
+	}
+	
+	func displayConfetti() async {
+		do {
+			showConfetti = true
+			try await Task.sleep(nanoseconds: 2_500_000_000)
+			showConfetti = false
+		} catch {
+			showConfetti = false
 		}
 	}
 }

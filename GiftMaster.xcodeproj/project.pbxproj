@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E3BA9C12B056B82006716EA /* SwipeActionsConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3BA9C02B056B82006716EA /* SwipeActionsConfirmationView.swift */; };
+		2E53AC562B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */; };
 		2E6EFB582AF6EA61004DA55D /* GiftMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EFB572AF6EA61004DA55D /* GiftMasterApp.swift */; };
 		2E6EFB5A2AF6EA61004DA55D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6EFB592AF6EA61004DA55D /* ContentView.swift */; };
 		2E6EFB5C2AF6EA63004DA55D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6EFB5B2AF6EA63004DA55D /* Assets.xcassets */; };
@@ -161,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E53AC562B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +592,9 @@
 			dependencies = (
 			);
 			name = GiftMaster;
+			packageProductDependencies = (
+				2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */,
+			);
 			productName = GiftMaster;
 			productReference = 2E6EFB542AF6EA61004DA55D /* GiftMaster.app */;
 			productType = "com.apple.product-type.application";
@@ -618,6 +623,9 @@
 				Base,
 			);
 			mainGroup = 2E6EFB4B2AF6EA61004DA55D;
+			packageReferences = (
+				2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */,
+			);
 			productRefGroup = 2E6EFB552AF6EA61004DA55D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -931,6 +939,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BertanT/SwiftUIConfettiOverlay.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E53AC552B0A2B4A00D02AA8 /* SwiftUIConfettiOverlay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E53AC542B0A2B4A00D02AA8 /* XCRemoteSwiftPackageReference "SwiftUIConfettiOverlay" */;
+			productName = SwiftUIConfettiOverlay;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2E6EFB4C2AF6EA61004DA55D /* Project object */;
 }
