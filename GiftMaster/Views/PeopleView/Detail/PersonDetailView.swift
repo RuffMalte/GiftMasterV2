@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ConfettiSwiftUI
+import SwiftUIConfettiOverlay
 
 struct PersonDetailView: View {
 	
