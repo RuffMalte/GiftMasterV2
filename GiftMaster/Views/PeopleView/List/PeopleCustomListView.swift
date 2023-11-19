@@ -13,11 +13,8 @@ struct PeopleCustomListView: View {
 	@State var searchText: String
 	var filteredPeople: [PersonModel]
 	
-	
-	
 	@Query(sort: \PersonModel.firstName, animation: .bouncy) var people: [PersonModel]
 	@Environment(\.modelContext) private var modelContext
-
 	
 	var body: some View {
 		ForEach(filteredPeople) { person in
@@ -28,6 +25,7 @@ struct PeopleCustomListView: View {
 			}
 		}
 		.onDelete(perform: deletePerson)
+		
 	}
 	
 	private func deletePerson(offsets: IndexSet) {
